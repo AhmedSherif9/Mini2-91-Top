@@ -1,0 +1,59 @@
+services:
+  app:
+    build: .
+    container_name: spring_app
+    ports:
+      - "8081:8080"
+    depends_on:
+      - mongo
+      - postgres
+    networks:
+      - mynetwork
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/Ahmed_52_2033
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: Y6&p@M1q!X8zA#L7
+      SPRING_DATA_MONGODB_URI: mongodb://root:example@mongo:27017/Ahmed_52_2033?authSource=admin
+
+  postgres:
+    image: postgres
+    container_name: database
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Y6&p@M1q!X8zA#L7
+      POSTGRES_DB: Ahmed_52_2033
+    ports:
+      - "5432:5432"
+    networks:
+      - mynetwork
+
+  mongo:
+    image: mongo
+    container_name: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: Ahmed_52_2033
+    ports:
+      - "27017:27017"
+    networks:
+      - mynetwork
+
+  mongo-express:
+    image: mongo-express
+    container_name: mongo_ui
+    restart: always
+    ports:
+      - "9000:8081"
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
+      ME_CONFIG_BASICAUTH: false
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
