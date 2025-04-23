@@ -13,6 +13,6 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
     @Query("SELECT c FROM Customer c WHERE c.email LIKE %:domain")
     public List<Customer> findCustomersByEmailDomain(@Param("domain") String domain);
 
-    @Query("SELECT c FROM Customer c WHERE c.phone LIKE :prefix%")
+    @Query("SELECT c FROM Customer c WHERE c.phoneNumber LIKE :prefix%")
     public List<Customer> findCustomersByPhonePrefix(@Param("prefix") String prefix);
 }

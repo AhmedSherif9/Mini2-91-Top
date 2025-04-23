@@ -2,7 +2,7 @@ package com.example.demo.models;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "payment")
+//@Table(name = "payment")
 public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +23,10 @@ public class Payment {
         this.paymentMethod = paymentMethod;
         this.paymentStatus = paymentStatus;
         this.trip = trip;
+    }
+
+    public Payment(){
+
     }
 
     public long getId() {
