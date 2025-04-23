@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "trips")
 public class Trip {
 
     @Id
@@ -53,6 +54,13 @@ public class Trip {
         this.tripCost = tripCost;
         this.captain = captain;
         this.customer = customer;
+    }
+
+    public Trip(LocalDateTime tripDate, String origin, String destination, Double tripCost) {
+        this.tripDate = tripDate;
+        this.origin = origin;
+        this.destination = destination;
+        this.tripCost = tripCost;
     }
 
     public Long getId() {

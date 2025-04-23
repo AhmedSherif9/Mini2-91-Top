@@ -3,7 +3,7 @@ package com.example.demo.models;
 import jakarta.persistence.*;
 
 @Entity
-//@Table(name = "customer")
+@Table(name = "customers")
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +29,12 @@ public class Customer {
     }
     public Customer(){
 
+    }
+
+    public Customer(String name, String email, String phoneNumber) {
+        this.name = name;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
     }
 
     public long getId() {
