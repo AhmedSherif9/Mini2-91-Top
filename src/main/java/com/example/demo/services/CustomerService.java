@@ -18,8 +18,6 @@ public class CustomerService {
 
     public Customer addCustomer(Customer customer){return customerRepository.save(customer);}
 
-    //public Customer addCustomer(Customer customer);
-
     public List<Customer> getAllCustomers() {
         return customerRepository.findAll();
     }

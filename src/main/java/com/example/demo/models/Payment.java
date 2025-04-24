@@ -23,6 +23,21 @@ public class Payment {
         this.paymentStatus = paymentStatus;
     }
 
+    public Payment(long id, double amount, String paymentMethod, boolean paymentStatus, Trip trip) {
+        this.id = id;
+        this.amount = amount;
+        this.paymentMethod = paymentMethod;
+        this.paymentStatus = paymentStatus;
+        this.trip = trip;
+    }
+
+    public Payment(long id, double amount, String paymentMethod, boolean paymentStatus) {
+        this.id = id;
+        this.amount = amount;
+        this.paymentMethod = paymentMethod;
+        this.paymentStatus = paymentStatus;
+    }
+
     public Payment(){
 
     }

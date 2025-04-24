@@ -1,12 +1,9 @@
 package com.example.demo.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "trips")
@@ -42,6 +39,35 @@ public class Trip {
         this.origin = origin;
         this.destination = destination;
         this.tripCost = tripCost;
+    }
+
+    public Trip(Long id, LocalDateTime tripDate, String origin, String destination, Double tripCost) {
+        this.id = id;
+        this.tripDate = tripDate;
+        this.origin = origin;
+        this.destination = destination;
+        this.tripCost = tripCost;
+    }
+
+    public Trip(Long id, LocalDateTime tripDate, String origin, String destination, Double tripCost, Captain captain, Customer customer) {
+        this.id = id;
+        this.tripDate = tripDate;
+        this.origin = origin;
+        this.destination = destination;
+        this.tripCost = tripCost;
+        this.captain = captain;
+        this.customer = customer;
+    }
+
+    public Trip(Long id, LocalDateTime tripDate, String origin, String destination, Double tripCost, Captain captain, Customer customer, Payment payment) {
+        this.id = id;
+        this.tripDate = tripDate;
+        this.origin = origin;
+        this.destination = destination;
+        this.tripCost = tripCost;
+        this.captain = captain;
+        this.customer = customer;
+        this.payment = payment;
     }
 
     public Long getId() {

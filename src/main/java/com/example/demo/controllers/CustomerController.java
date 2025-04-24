@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 import com.example.demo.models.Customer;
 import com.example.demo.services.CustomerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,11 +12,12 @@ import java.util.List;
 public class CustomerController {
     private final CustomerService customerService;
 
+    @Autowired
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
     }
 
-    @GetMapping
+    @GetMapping("/allCustomers")
     public List<Customer> getAllCustomers() {
         return customerService.getAllCustomers();
     }
@@ -25,26 +27,26 @@ public class CustomerController {
         return customerService.getCustomerById(id);
     }
 
-    @PostMapping
+    @PostMapping("/addCustomer")
     public Customer addCustomer(@RequestBody Customer customer) {
         return customerService.addCustomer(customer);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public Customer updateCustomer(@PathVariable long id, @RequestBody Customer customer) {
         return customerService.updateCustomer(id, customer);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteCustomer(@PathVariable long id) {
         customerService.deleteCustomer(id);
     }
 
-    @GetMapping("/by-domain")
+    @GetMapping("/findByEmailDomain")
     public List<Customer> getCustomersByEmailDomain(@RequestParam String domain) {
         return customerService.findCustomersByEmailDomain(domain);
     }
-    @GetMapping("/by-phone-prefix")
+    @GetMapping("/findByPhonePrefix")
     public List<Customer> getCustomersByPhonePrefix(@RequestParam String prefix) {
         return customerService.findCustomersByPhonePrefix(prefix);
     }

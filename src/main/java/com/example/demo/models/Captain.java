@@ -1,10 +1,8 @@
 package com.example.demo.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -30,6 +28,21 @@ public class Captain {
         this.name = name;
         this.licenseNumber = licenseNumber;
         this.avgRatingScore = avgRatingScore;
+    }
+
+    public Captain(Long id, String name, String licenseNumber, Double avgRatingScore) {
+        this.id = id;
+        this.name = name;
+        this.licenseNumber = licenseNumber;
+        this.avgRatingScore = avgRatingScore;
+    }
+
+    public Captain(Long id, String name, String licenseNumber, Double avgRatingScore, List<Trip> trips) {
+        this.id = id;
+        this.name = name;
+        this.licenseNumber = licenseNumber;
+        this.avgRatingScore = avgRatingScore;
+        this.trips = trips;
     }
 
     public Long getId() {

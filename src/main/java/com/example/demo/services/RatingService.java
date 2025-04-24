@@ -19,10 +19,8 @@ public class RatingService {
       return  ratingRepository.save(rating);
     }
     public Rating updateRating(String id, Rating updatedRating) {
-        // Find the existing rating by ID
         return ratingRepository.findById(id)
                 .map(existingRating -> {
-                    // Update fields
                     existingRating.setEntityId(updatedRating.getEntityId());
                     existingRating.setEntityType(updatedRating.getEntityType());
                     existingRating.setScore(updatedRating.getScore());
