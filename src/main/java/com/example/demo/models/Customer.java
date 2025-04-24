@@ -1,6 +1,9 @@
 package com.example.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "customers")
@@ -11,22 +14,11 @@ public class Customer {
     private String name;
     private String email;
     private String phoneNumber;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "trip_id")
-    Trip trip;
 
-    public Customer(Long id, String name, String email, String phoneNumber, Trip trip) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-    }
-    public Customer(String name, String email, String phoneNumber, Trip trip) {
-        this.name = name;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.trip = trip;
-    }
+    @OneToMany(mappedBy = "customer")
+    @JsonIgnore
+    private List<Trip> trips;
+
     public Customer(){
 
     }
@@ -69,11 +61,11 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
-    public Trip getTrip() {
-        return trip;
+    public List<Trip> getTrips() {
+        return trips;
     }
 
-    public void setTrip(Trip trip) {
-        this.trip = trip;
+    public void setTrips(List<Trip> trips) {
+        this.trips = trips;
     }
 }

@@ -10,15 +10,6 @@ public class Rating {
     public Rating() {
     }
 
-    public Rating(String id, Long entityId, String entityType, Integer score, String comment, LocalDateTime ratingDate) {
-        this.id = id;
-        this.entityId = entityId;
-        this.entityType = entityType;
-        this.score = score;
-        this.comment = comment;
-        this.ratingDate = ratingDate;
-    }
-
     @Id
     private String id;
     private Long entityId;

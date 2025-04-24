@@ -25,14 +25,8 @@ public class Captain {
 
     public Captain() {}
 
-    public Captain(String name, String licenseNumber, Double avgRatingScore) {
-        this.name = name;
-        this.licenseNumber = licenseNumber;
-        this.avgRatingScore = avgRatingScore;
-    }
 
-    public Captain(Long id, String name, String licenseNumber, Double avgRatingScore) {
-        this.id = id;
+    public Captain(String name, String licenseNumber, Double avgRatingScore) {
         this.name = name;
         this.licenseNumber = licenseNumber;
         this.avgRatingScore = avgRatingScore;

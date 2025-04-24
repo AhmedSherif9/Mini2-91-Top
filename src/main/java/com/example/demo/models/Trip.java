@@ -37,25 +37,6 @@ public class Trip {
 
     public Trip() {}
 
-    public Trip(LocalDateTime tripDate, String origin, String destination, Double tripCost, Captain captain, Customer customer) {
-        this.tripDate = tripDate;
-        this.origin = origin;
-        this.destination = destination;
-        this.tripCost = tripCost;
-        this.captain = captain;
-        this.customer = customer;
-    }
-
-    public Trip(Long id, LocalDateTime tripDate, String origin, String destination, Double tripCost, Captain captain, Customer customer) {
-        this.id = id;
-        this.tripDate = tripDate;
-        this.origin = origin;
-        this.destination = destination;
-        this.tripCost = tripCost;
-        this.captain = captain;
-        this.customer = customer;
-    }
-
     public Trip(LocalDateTime tripDate, String origin, String destination, Double tripCost) {
         this.tripDate = tripDate;
         this.origin = origin;
@@ -117,5 +98,13 @@ public class Trip {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
     }
 }

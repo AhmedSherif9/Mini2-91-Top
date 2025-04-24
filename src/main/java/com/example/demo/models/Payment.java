@@ -1,4 +1,5 @@
 package com.example.demo.models;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -10,19 +11,16 @@ public class Payment {
     private double amount;
     private String paymentMethod;
     private boolean paymentStatus;
-    @OneToOne(mappedBy = "payment", cascade = CascadeType.ALL)
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "trip_id", referencedColumnName = "id")
+    @JsonIgnore
     private Trip trip;
 
     public Payment(double amount, String paymentMethod, boolean paymentStatus) {
         this.amount = amount;
         this.paymentMethod = paymentMethod;
         this.paymentStatus = paymentStatus;
-    }
-    public Payment(double amount, String paymentMethod, boolean paymentStatus, Trip trip) {
-        this.amount = amount;
-        this.paymentMethod = paymentMethod;
-        this.paymentStatus = paymentStatus;
-        this.trip = trip;
     }
 
     public Payment(){

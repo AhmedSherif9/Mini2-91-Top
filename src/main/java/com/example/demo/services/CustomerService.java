@@ -40,12 +40,13 @@ public class CustomerService {
           existingCustomer.setName(customer.getName());
           existingCustomer.setEmail(customer.getEmail());
           existingCustomer.setPhoneNumber(customer.getPhoneNumber());
-          existingCustomer.setTrip(customer.getTrip());
+          existingCustomer.setTrips(customer.getTrips());
           return customerRepository.save(existingCustomer);
         } else {
             throw new RuntimeException("Customer with id " + id + " not found");
         }
     }
+
     public List<Customer> findCustomersByEmailDomain(String domain){
         if (!domain.startsWith("@")) {
             domain = "@" + domain;
